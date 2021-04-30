@@ -1,6 +1,6 @@
 /*#ffeb3b rgba(255, 228, 106, 0.945)*/
 .header {
-    background-color: #ffeb3b;
+    background-color: #5989f0;
     border-bottom: 1px solid #e9ecef;
 
     > .container {
@@ -9,7 +9,14 @@
         padding: 6px;
     }
 }
+jk {
+    font-size: 2rem;
+font-family: 'Roboto';
+font-weight: 500;
+color: #2d2d2d;
+position: relative;
 
+}
 .logo-link {
     display: flex;
     align-items: center;

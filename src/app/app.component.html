@@ -6,9 +6,18 @@
             <!--    <vsf-mobile-menu-toggle></vsf-mobile-menu-toggle> -->
 
                 <a [routerLink]="['/']" class="logo-link d-none d-md-inline-block ">
+                
                     <img src="assets/icons/icon-144x144.png" class="logo" alt="Vendure Storefront">
                 </a>
-                <div class="d-sm-block pagetitle"></div>
+                <div class="d-sm-block pagetitle">
+                    <ul class="list-unstyled">
+                    <li ><jk>
+                        ACE
+                    </jk></li>
+                    <li ><jk>
+                        ELECTRONICOS
+                    </jk></li>
+                </ul></div>
                 <vsf-product-search-bar class="flex-grow-1"></vsf-product-search-bar>
                 <vsf-account-link class="mr-2"></vsf-account-link>
                 <vsf-cart-toggle (toggle)="openCartDrawer()"></vsf-cart-toggle>
