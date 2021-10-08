@@ -1,9 +1,10 @@
 export const environment = {
     production: true,
-    apiHost: 'http://190.148.223.26',
-    apiPort: 4000,
+    apiHost: 'https://www.compus4less.com',
+    apiPort: 443,
     shopApiPath: 'shop-api',
     baseHref: '/',
     deployUrl: '/', 
     tokenMethod: 'cookie',
 };
+
