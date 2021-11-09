@@ -38,7 +38,7 @@ export class AccountChangeCredentialsComponent {
             emailAddress: this.emailAddress,
         })
             .subscribe(() => {
-                this.changeEmailAddressMessage = `To complete the process, please check your email (${this.emailAddress}) to verify the address.`;
+                this.changeEmailAddressMessage = `Para completar el proceso, por favor revisa tu correo electrónico (${this.emailAddress}) para verificar la dirección.`;
                 this.password = '';
                 this.emailAddress = '';
                 this.changeDetectorRef.markForCheck();

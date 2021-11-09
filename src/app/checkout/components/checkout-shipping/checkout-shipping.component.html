@@ -26,18 +26,18 @@
             <form #customerForm="ngForm">
                 <div class="d-lg-flex">
                     <input class="form-control"
-                           placeholder="First Name"
+                           placeholder="Nombres"
                            name="firstName"
                            [(ngModel)]="firstName"
                            required>
                     <input class="form-control"
-                           placeholder="Last Name"
+                           placeholder="Apellidos"
                            name="lastName"
                            [(ngModel)]="lastName"
                            required>
 
                     <input class="form-control"
-                           placeholder="Email Address"
+                           placeholder="Correo Electrónico"
                            name="emailAddress"
                            [(ngModel)]="emailAddress"
                            required>
@@ -79,8 +79,8 @@
                        [value]="method.id"
                        [id]="method.id">
                 <label class="form-check-label shipping-method" [for]="method.id">
-                    <div class="description">{{ method.description }}</div>
-                    <div class="price">{{ method.price / 100 | currency }}</div>
+                    <div class="description">{{ method.name }}</div>
+                    <div class="price"> Q {{ method.price | formatPrice   }}</div>
                 </label>
             </div>
             <button class="btn btn-secondary mt-3"

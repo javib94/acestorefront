@@ -1,11 +1,11 @@
 // tslint:disable
 
-      export interface PossibleTypesResultData {
-        possibleTypes: {
-          [key: string]: string[]
-        }
-      }
-      const result: PossibleTypesResultData = {
+export interface PossibleTypesResultData {
+  possibleTypes: {
+    [key: string]: string[]
+  }
+}
+const result: PossibleTypesResultData = {
   "possibleTypes": {
     "CustomField": [
       "BooleanCustomFieldConfig",
@@ -13,6 +13,7 @@
       "FloatCustomFieldConfig",
       "IntCustomFieldConfig",
       "LocaleStringCustomFieldConfig",
+      "RelationCustomFieldConfig",
       "StringCustomFieldConfig"
     ],
     "ErrorResult": [
@@ -23,12 +24,14 @@
       "EmailAddressConflictError",
       "IdentifierChangeTokenExpiredError",
       "IdentifierChangeTokenInvalidError",
+      "IneligiblePaymentMethodError",
       "IneligibleShippingMethodError",
       "InsufficientStockError",
       "InvalidCredentialsError",
       "MissingPasswordError",
       "NativeAuthStrategyError",
       "NegativeQuantityError",
+      "NoActiveOrderError",
       "NotVerifiedError",
       "OrderLimitError",
       "OrderModificationError",
@@ -44,11 +47,8 @@
     ],
     "Node": [
       "Address",
-      "Administrator",
-      "Allocation",
       "Asset",
       "AuthenticationMethod",
-      "Cancellation",
       "Channel",
       "Collection",
       "Country",
@@ -62,26 +62,22 @@
       "OrderItem",
       "OrderLine",
       "Payment",
-      "PaymentMethod",
       "Product",
       "ProductOption",
       "ProductOptionGroup",
       "ProductVariant",
       "Promotion",
       "Refund",
-      "Release",
-      "Return",
       "Role",
-      "Sale",
       "ShippingMethod",
-      "StockAdjustment",
+      "Surcharge",
+      "Tag",
       "TaxCategory",
       "TaxRate",
       "User",
       "Zone"
     ],
     "PaginatedList": [
-      "AdministratorList",
       "AssetList",
       "CollectionList",
       "CountryList",
@@ -94,17 +90,16 @@
       "PromotionList",
       "RoleList",
       "ShippingMethodList",
+      "TagList",
       "TaxRateList"
     ],
-    "StockMovement": [
-      "Allocation",
-      "Cancellation",
-      "Release",
-      "Return",
-      "Sale",
-      "StockAdjustment"
+    "ActiveOrderResult": [
+      "NoActiveOrderError",
+      "Order"
     ],
     "AddPaymentToOrderResult": [
+      "IneligiblePaymentMethodError",
+      "NoActiveOrderError",
       "Order",
       "OrderPaymentStateError",
       "OrderStateTransitionError",
@@ -128,6 +123,7 @@
       "FloatCustomFieldConfig",
       "IntCustomFieldConfig",
       "LocaleStringCustomFieldConfig",
+      "RelationCustomFieldConfig",
       "StringCustomFieldConfig"
     ],
     "NativeAuthenticationResult": [
@@ -172,20 +168,14 @@
     "SetCustomerForOrderResult": [
       "AlreadyLoggedInError",
       "EmailAddressConflictError",
+      "NoActiveOrderError",
       "Order"
     ],
     "SetOrderShippingMethodResult": [
       "IneligibleShippingMethodError",
+      "NoActiveOrderError",
       "Order",
       "OrderModificationError"
-    ],
-    "StockMovementItem": [
-      "Allocation",
-      "Cancellation",
-      "Release",
-      "Return",
-      "Sale",
-      "StockAdjustment"
     ],
     "TransitionOrderToStateResult": [
       "Order",
@@ -219,5 +209,4 @@
     ]
   }
 };
-      export default result;
-    
+export default result;
