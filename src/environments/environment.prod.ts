@@ -1,9 +1,9 @@
 export const environment = {
-    production: true,
-    apiHost: 'http://190.148.223.26',
-    apiPort: 4000,
+    production: false,
+    apiHost: 'https://www.aceelectronicos.tk',
+    apiPort: 443,
     shopApiPath: 'shop-api',
     baseHref: '/',
-    deployUrl: '/', 
+    deployUrl: '/',
     tokenMethod: 'cookie',
 };
