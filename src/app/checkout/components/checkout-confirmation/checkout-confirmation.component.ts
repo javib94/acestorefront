@@ -8,8 +8,16 @@ import { GetOrderByCode, Register } from '../../../common/generated-types';
 import { notNullOrUndefined } from '../../../common/utils/not-null-or-undefined';
 import { DataService } from '../../../core/providers/data/data.service';
 import { StateService } from '../../../core/providers/state/state.service';
+import { MessageService } from '../../../services/message.service';
 
 import { GET_ORDER_BY_CODE } from './checkout-confirmation.graphql';
+
+type Mensaje = {
+    nombre: string;
+    email: string;
+    asunto: string;
+    mensaje: string;
+};
 
 @Component({
     selector: 'vsf-checkout-confirmation',
@@ -22,10 +30,12 @@ export class CheckoutConfirmationComponent implements OnInit {
     order$: Observable<GetOrderByCode.OrderByCode>;
     notFound$: Observable<boolean>;
 
+
     constructor(private stateService: StateService,
-                private dataService: DataService,
-                private changeDetector: ChangeDetectorRef,
-                private route: ActivatedRoute) { }
+        private dataService: DataService,
+        private changeDetector: ChangeDetectorRef,
+        private route: ActivatedRoute,
+        public _MessageService: MessageService) { }
 
     ngOnInit() {
         const orderRequest$ = this.route.paramMap.pipe(
@@ -33,17 +43,38 @@ export class CheckoutConfirmationComponent implements OnInit {
             filter(notNullOrUndefined),
             switchMap(code => this.dataService.query<GetOrderByCode.Query, GetOrderByCode.Variables>(
                 GET_ORDER_BY_CODE,
-                { code },
+                { code  },
             )),
             map(data => data.orderByCode),
             shareReplay(1),
         );
         this.order$ = orderRequest$.pipe(
-            filter(notNullOrUndefined),
+            filter(notNullOrUndefined)
         );
         this.notFound$ = orderRequest$.pipe(
             map(res => !res),
         );
+
+        //enviar correo 
+        this.order$.forEach(order => {
+            const customer = order?.customer;
+            if (customer) {
+                let msj: Mensaje = {
+                    nombre: customer.firstName + " " + customer.lastName,
+                    email: customer.emailAddress,
+                    asunto: "Nuevo Pedido #" + order.code,
+                    mensaje: "Se ha realizado un nuevo pedido con número."+ order.code +". Ingresar a https://www.compus4less.com/admin para mas información. ",
+                }
+                this._MessageService.sendMessage(msj).subscribe(res => {
+                    if (res == 'OK') {
+                        console.log("Email sended.")
+                    } else {
+                        console.log("Email not sended.")
+                    }
+                });
+            }
+        });
+        //
     }
 
     register() {
@@ -53,8 +84,8 @@ export class CheckoutConfirmationComponent implements OnInit {
                 const customer = order?.customer;
                 if (customer) {
                     return this.dataService.mutate<Register.Mutation, Register.Variables>(REGISTER, {
-                        input: {    
-                            emailAddress: customer.emailAddress, 
+                        input: {
+                            emailAddress: customer.emailAddress,
                             firstName: customer.firstName,
                             lastName: customer.lastName,
                         },

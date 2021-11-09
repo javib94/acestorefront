@@ -29,30 +29,39 @@ export const CART_FRAGMENT = gql`
             unitPrice
             unitPriceWithTax
             quantity
-            totalPrice
+            linePriceWithTax
+            discountedLinePriceWithTax
             productVariant {
                 id
                 name
             }
-            adjustments {
+            discounts {
                 amount
+                amountWithTax
                 description
                 adjustmentSource
                 type
             }
         }
+        totalQuantity
         subTotal
-        subTotalBeforeTax
-        totalBeforeTax
-        shipping
-        shippingMethod {
-            id
-            code
-            description
-        }
+        subTotalWithTax
         total
-        adjustments {
+        totalWithTax
+        shipping
+        shippingWithTax
+        shippingLines {
+            priceWithTax
+            shippingMethod {
+                id
+                code
+                name
+                description
+            }
+        }
+        discounts {
             amount
+            amountWithTax
             description
             adjustmentSource
             type

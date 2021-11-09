@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { BehaviorSubject, combineLatest, merge, Observable, of } from 'rxjs';
+import { LogicalOperator } from '../../../common/generated-types'
 import {
     distinctUntilChanged,
     exhaustMap,
@@ -24,6 +25,7 @@ import { DataService } from '../../providers/data/data.service';
 import { StateService } from '../../providers/state/state.service';
 
 import { GET_COLLECTION, SEARCH_PRODUCTS } from './product-list.graphql';
+import { types } from 'util';
 
 @Component({
     selector: 'vsf-product-list',
@@ -147,6 +149,7 @@ export class ProductListComponent implements OnInit {
                         facetValueIds,
                         take: perPage,
                         skip: this.currentPage * perPage,
+                        facetValueOperator: LogicalOperator.AND,
                     },
                 }).pipe(
                     tap(data => {

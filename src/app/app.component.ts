@@ -34,7 +34,11 @@ export class AppComponent implements OnInit {
 
     closeCartDrawer() {
         this.stateService.setState('cartDrawerOpen', false);
-    }/*
+    }
+    goToLink(url: string){
+        window.open(url, "_blank");
+    }
+    /*
      contactForm(form) {
        this._MessageService.sendMessage(form).subscribe(() => {
             Swal.fire('Thank you...', 'You submitte
