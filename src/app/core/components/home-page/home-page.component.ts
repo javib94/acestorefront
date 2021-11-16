@@ -80,7 +80,7 @@ const GET_COLLECTIONS = gql`
 const GET_TOP_SELLERS = gql`
     query GetTopSellers {
         search(input: {
-            take: 8,
+            take: 10,
             groupByProduct: true,
             sort: {
                 price: ASC

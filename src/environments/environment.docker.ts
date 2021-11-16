@@ -5,4 +5,5 @@ export const environment = {
     shopApiPath: 'shop-api',
     baseHref: '/',
     tokenMethod: 'bearer',
+//    channelToken: 'hd4invj2w9qq78ceknn'
 };

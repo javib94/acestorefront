@@ -1,5 +1,5 @@
 export const environment = {
-    production: false,
+    production: true,
     apiHost: 'https://www.aceelectronicos.tk',
     apiPort: 443,
     shopApiPath: 'shop-api',
