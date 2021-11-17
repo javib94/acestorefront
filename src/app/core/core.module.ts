@@ -37,6 +37,7 @@ import { MDBBootstrapModule,  NavbarModule, WavesModule, ButtonsModule} from 'an
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { FormsModule }   from '@angular/forms';
 import { MessageService } from '../services/message.service';
+
 const CORE_COMPONENTS = [
     ProductListComponent,
     ProductDetailComponent,
