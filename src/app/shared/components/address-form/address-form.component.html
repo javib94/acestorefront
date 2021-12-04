@@ -1,6 +1,6 @@
 <form [formGroup]="addressForm">
     <div class="form-group row">
-        <label for="fullName" class="col-sm-3 col-form-label">Nombre Completo</label>
+        <label for="fullName" class="col-sm-3 col-form-label">Nombre Completo *</label>
         <div class="col-sm-9">
             <input class="form-control" formControlName="fullName" id="fullName">
         </div>
@@ -12,37 +12,43 @@
         </div>
     </div>
     <div class="form-group row">
-        <label for="streetLine1" class="col-sm-3 col-form-label">Direccion Linea 1</label>
+        <label for="streetLine1" class="col-sm-3 col-form-label">Dirección *</label>
         <div class="col-sm-9">
             <input class="form-control" formControlName="streetLine1" id="streetLine1">
         </div>
     </div>
+    <!-- 
     <div class="form-group row">
         <label for="streetLine2" class="col-sm-3 col-form-label">Direccion Linea 2</label>
         <div class="col-sm-9">
             <input class="form-control" formControlName="streetLine2" id="streetLine2">
         </div>
     </div>
+    -->
     <div class="form-group row">
-        <label for="city" class="col-sm-3 col-form-label">Ciudad</label>
+        <label for="city" class="col-sm-3 col-form-label">Municipio * </label>
         <div class="col-sm-9">
             <input class="form-control" formControlName="city" id="city">
         </div>
-    </div>
+    </div>    
+    <!-- 
     <div class="form-group row">
-        <label for="province" class="col-sm-3 col-form-label">Provincia</label>
+        <label for="province" class="col-sm-3 col-form-label">Municipio * </label>
         <div class="col-sm-9">
             <input class="form-control" formControlName="province" id="province">
         </div>
     </div>
+    -->
+    <!-- 
     <div class="form-group row">
         <label for="postalCode" class="col-sm-3 col-form-label">Codigo Postal</label>
         <div class="col-sm-9">
             <input class="form-control" formControlName="postalCode" id="postalCode">
         </div>
     </div>
+    -->
     <div class="form-group row">
-        <label for="countryCode" class="col-sm-3 col-form-label">Country</label>
+        <label for="countryCode" class="col-sm-3 col-form-label">Departamento</label>
         <div class="col-sm-9">
             <select class="custom-select" formControlName="countryCode" id="countryCode">
                 <option *ngFor="let country of availableCountries" [ngValue]="country.code">

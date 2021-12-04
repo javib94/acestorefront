@@ -2,6 +2,8 @@ import { isPlatformBrowser } from '@angular/common';
 import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
 import { Inject, Injectable, Injector, PLATFORM_ID } from '@angular/core';
 import { Router } from '@angular/router';
+import { graphQLResultHasError } from '@apollo/client/utilities';
+import { GraphQLError } from 'graphql';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
@@ -53,6 +55,7 @@ export class DefaultInterceptor implements HttpInterceptor {
             // GraphQL errors still return 200 OK responses, but have the actual error message
             // inside the body of the response.
             const graqhQLErrors = response.body.errors;
+            //console.log(response.body)
             if (graqhQLErrors && Array.isArray(graqhQLErrors)) {
                 const firstCode: string = graqhQLErrors[0].extensions.code;
                 if (firstCode === 'FORBIDDEN') {

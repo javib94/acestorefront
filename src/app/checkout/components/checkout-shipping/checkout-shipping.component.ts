@@ -136,11 +136,11 @@ export class CheckoutShippingComponent implements OnInit {
         if (shippingMethodId) {
             this.stateService.select(state => state.signedIn).pipe(
                 mergeMap(signedIn => !signedIn ? this.setCustomerForOrder() || of({}) : of({})),
-                mergeMap(() =>
+                /*mergeMap(() =>
                     this.dataService.mutate<SetShippingMethod.Mutation, SetShippingMethod.Variables>(SET_SHIPPING_METHOD, {
                         id: shippingMethodId,
                     }),
-                ),
+                ),*/
                 mergeMap(() => this.dataService.mutate<TransitionToArrangingPayment.Mutation>(TRANSITION_TO_ARRANGING_PAYMENT)),
             ).subscribe((data) => {
                 this.router.navigate(['../payment'], { relativeTo: this.route });

@@ -17,13 +17,13 @@ export class AddressFormComponent implements OnChanges {
     addressForm: FormGroup;
     constructor(private formBuilder: FormBuilder) {
         this.addressForm = this.formBuilder.group({
-            fullName: '',
+            fullName: ['', Validators.required],
             company: '',
             streetLine1: ['', Validators.required],
             streetLine2: '',
             city: ['', Validators.required],
             province: '',
-            postalCode: ['', Validators.required],
+            postalCode: '',
             countryCode: ['', Validators.required],
             phoneNumber: '',
         });
