@@ -25,7 +25,6 @@ export class HomePageComponent implements OnInit {
     images = [
         {path: 'assets/slides/Slide1.jpg'},
         ]
-    @ViewChild('myCarousel') myCarousel:IvyCarouselModule;
     readonly placeholderProducts = Array.from({ length: 12 }).map(() => null);
     constructor(public _MessageService: MessageService, private dataService: DataService, private sanitizer: DomSanitizer) { 
         this.images = []
