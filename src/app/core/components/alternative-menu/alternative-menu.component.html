@@ -12,7 +12,12 @@
             <li class="nav-item active">
                 <a class="nav-link waves-light" mdbWavesEffect href="/">Home<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item dropdown" dropdown>
+            <li class="nav-item">
+              <a class="nav-link waves-light" mdbWavesEffect href="/information">Información<span class="sr-only">(current)</span></a>
+          </li>
+          
+          <!--  
+          <li class="nav-item dropdown" dropdown>
               <a dropdownToggle mdbWavesEffect type="button" class="nav-link dropdown-toggle waves-light" mdbWavesEffect>
               Información<span class="caret"></span></a>
               <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary" role="menu">
@@ -23,10 +28,10 @@
                   <a class="dropdown-item waves-light" mdbWavesEffect href="/information#garantia"> Garantía </a>
                   <a class="dropdown-item waves-light" mdbWavesEffect href="/information#asesoria"> Asesoría Gratis</a>
                   <a class="dropdown-item waves-light" mdbWavesEffect href="/information#seguridad"> Seguridad </a>
-                 <!--      <div class="divider dropdown-divider"></div> -->
+                       <div class="divider dropdown-divider"></div> 
               </div>
           </li>
-
+          -->
 
 
 
@@ -42,7 +47,6 @@
                     <a class="dropdown-item waves-light" mdbWavesEffect href="/category/repuestos">Repuestos</a>
                     <a class="dropdown-item waves-light" mdbWavesEffect href="/category/productos-miscelaneos">Productos Miscelaneos</a>
                     <a class="dropdown-item waves-light" mdbWavesEffect href="/category/combos">Combos</a>
-                    <a class="dropdown-item waves-light" mdbWavesEffect href="/category/celulares">Celulares</a>
                     <a class="dropdown-item waves-light" mdbWavesEffect href="/category/gangas">GANGAS 50% De Descuento</a>
                 </div>
             </li>
@@ -63,29 +67,29 @@
         <ul class="navbar-nav ml-auto nav-flex-icons">
             <li class="nav-item">
               <a class="nav-link" (click)='goToLink("https://www.facebook.com/aceelectronicos")' target="_blank">
-                <mdb-icon fab icon="facebook" size="2x"></mdb-icon>
+                <mdb-icon class="fbicon" fab icon="facebook" size="2x"></mdb-icon>
               </a>
             </li>
 
             <li class="nav-item">
                 <a class="nav-link"  (click)='goToLink("https://wa.me/50259996545")' target="_blank">
-                  <mdb-icon fab icon="whatsapp" size="2x"></mdb-icon>
+                  <mdb-icon class="waicon" fab icon="whatsapp" size="2x"></mdb-icon>
                 </a>
               </li>
 
               <li class="nav-item">
                 <a class="nav-link" (click)='goToLink("https://m.me/aceelectronicos")' target="_blank">
-                  <mdb-icon fab icon="facebook-messenger" size="2x"></mdb-icon>
+                  <mdb-icon class="mssicon" fab icon="facebook-messenger" size="2x"></mdb-icon>
                 </a>
               </li>
             <li class="nav-item"  (click)='goToLink("https://www.instagram.com/ace_electronicos/")' target="_blank">
               <a class="nav-link">
-                <mdb-icon fab icon="instagram" size="2x"></mdb-icon>
+                <mdb-icon class="instaicon" fab icon="instagram" size="2x"></mdb-icon>
               </a>
             </li>
-            <li class="nav-item"  (click)='goToLink("https://www.paypal.com/")' target="_blank">
+            <li class="nav-item"  (click)='goToLink("https://paypal.me/compus4less?country.x=US&locale.x=en_US")' target="_blank">
               <a class="nav-link">
-                <mdb-icon fab icon="cc-paypal" size="2x"></mdb-icon>
+                <mdb-icon class="paypalicon" fab icon="cc-paypal" size="2x"></mdb-icon>
               </a>
             </li>
             

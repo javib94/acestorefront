@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 import { gql } from 'apollo-angular';
 import { Observable } from 'rxjs';
@@ -6,6 +6,9 @@ import { map, shareReplay } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
 import { DataService } from '../../providers/data/data.service';
+import { MessageService } from '../../../services/message.service';
+
+import { IvyCarouselModule } from 'angular-responsive-carousel';
 
 @Component({
     selector: 'vsf-home-page',
@@ -19,16 +22,24 @@ export class HomePageComponent implements OnInit {
     topSellers$: Observable<any[]>;
     topSellersLoaded$: Observable<boolean>;
     heroImage: SafeStyle;
-    readonly placeholderProducts = Array.from({ length: 12 }).map(() => null);
-    constructor(private dataService: DataService, private sanitizer: DomSanitizer) { }
     images = [
         {path: 'assets/slides/Slide1.jpg'},
-        {path: 'assets/slides/Slide2.jpg'},
-        {path: 'assets/slides/Slide3.jpg'},
-        {path: 'assets/slides/Slide4.jpg'},
-        {path: 'assets/slides/Slide5.jpg'},
-        {path: 'assets/slides/Slide6.jpg'},
-    ]
+        ]
+    @ViewChild('myCarousel') myCarousel:IvyCarouselModule;
+    readonly placeholderProducts = Array.from({ length: 12 }).map(() => null);
+    constructor(public _MessageService: MessageService, private dataService: DataService, private sanitizer: DomSanitizer) { 
+        this.images = []
+        let responsearray:any = []
+        this._MessageService.getBannerImages().subscribe(res => {
+            let str:string = res.toString()
+            let paths = str.replace('\n','').split(',')
+            for(let img of paths){
+                responsearray.push({path:img.toString()})
+            }
+            this.images = responsearray;
+        });
+        
+    }
     ngOnInit() {
         this.collections$ = this.dataService.query(GET_COLLECTIONS, {
             options: {},
@@ -46,8 +57,7 @@ export class HomePageComponent implements OnInit {
             map(items => 0 < items.length),
         );
 
-        this.heroImage = this.sanitizer.bypassSecurityTrustStyle(this.getHeroImageUrl());
-    }
+    }   
 
     private getHeroImageUrl(): string {
         const { apiHost, apiPort } = environment;

@@ -37,6 +37,7 @@ import { MDBBootstrapModule,  NavbarModule, WavesModule, ButtonsModule} from 'an
 import { FormularioComponent } from './components/formulario/formulario.component';
 import { FormsModule }   from '@angular/forms';
 import { MessageService } from '../services/message.service';
+import {IvyCarouselModule} from 'angular-responsive-carousel';
 
 const CORE_COMPONENTS = [
     ProductListComponent,
@@ -75,7 +76,8 @@ let providedCacheState: any | undefined;
         NavbarModule, 
         WavesModule, 
         ButtonsModule,
-        FormsModule
+        FormsModule,
+        IvyCarouselModule,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: DefaultInterceptor, multi: true },

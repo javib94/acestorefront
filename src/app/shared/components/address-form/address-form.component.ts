@@ -25,7 +25,7 @@ export class AddressFormComponent implements OnChanges {
             province: '',
             postalCode: '',
             countryCode: ['', Validators.required],
-            phoneNumber: '',
+            phoneNumber: ['',Validators.required],
         });
     }
 
