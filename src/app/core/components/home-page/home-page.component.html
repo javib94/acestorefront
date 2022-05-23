@@ -5,7 +5,7 @@
         [autoplay]="true"
         [dots]="true" 
         [loop]="true"
-        [autoplayInterval]=5000 
+        [autoplayInterval]=3500 
         [height]=400
         transitionTimingFunction="ease"
         objectFit="contain"
@@ -21,7 +21,7 @@
         </vsf-collection-card>
     </div>
     -->
-    <h3 class="display-4 mt-5">Productos Destacados</h3>
+    <h3 class="display-4 mt-5">Productos Recientes</h3>
     <div class="product-list">
         <ng-container *ngIf="topSellersLoaded$ | async; else placeholders">
             <vsf-product-card *ngFor="let product of topSellers$ | async" [product]="product"></vsf-product-card>

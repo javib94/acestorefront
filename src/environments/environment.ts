@@ -4,7 +4,7 @@
 
 export const environment = {
     production: false,
-    apiHost: 'https://www.aceelectronicos.tk',
+    apiHost: 'https://www.aceelectronicos.com',
     apiPort: 443,
     shopApiPath: 'shop-api',
     baseHref: '/',

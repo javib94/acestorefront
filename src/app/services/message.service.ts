@@ -10,11 +10,11 @@ export class MessageService {
   constructor(private _http: HttpClient) { }
 
   sendMessage(body: object) {
-     return this._http.post('https://www.aceelectronicos.tk/formulario', body, {responseType: 'text'});
+     return this._http.post('https://www.aceelectronicos.com/formulario', body, {responseType: 'text'});
   }
 
   getBannerImages(){
-    return this._http.get('https://www.aceelectronicos.tk/banner');  
+    return this._http.get('https://www.aceelectronicos.com/banner');  
   }
    
 }
