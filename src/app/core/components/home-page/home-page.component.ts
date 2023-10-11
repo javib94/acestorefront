@@ -23,22 +23,23 @@ export class HomePageComponent implements OnInit {
     topSellersLoaded$: Observable<boolean>;
     heroImage: SafeStyle;
     images = [
-        {path: 'assets/slides/Slide1.jpg'},
+        {path: ''}
         ]
     readonly placeholderProducts = Array.from({ length: 12 }).map(() => null);
     constructor(public _MessageService: MessageService, private dataService: DataService, private sanitizer: DomSanitizer) { 
-        this.images = []
-        let responsearray:any = []
-        this._MessageService.getBannerImages().subscribe(res => {
-            let str:string = res.toString()
-            let paths = str.replace('\n','').split(',')
-            for(let img of paths){
-                responsearray.push({path:img.toString()})
+        this._MessageService.getBannerImages().subscribe(
+            (res: any) => {
+              if (Array.isArray(res)) {
+                this.images = res.map(img => ({ path: img.toString() }));
+                console.log (this.images)
+              }
+            },
+            error => {
+              console.error('Error loading banner images:', error);
             }
-            this.images = responsearray;
-        });
-        
+          );
     }
+
     ngOnInit() {
         this.collections$ = this.dataService.query(GET_COLLECTIONS, {
             options: {},
